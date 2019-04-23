@@ -8,6 +8,8 @@ Reybel Candelaria: https://github.com/Reybel24
 
 Amrut Patel: https://github.com/AmrutP1130
 
+Jeremy Appelbaum: https://github.com/ja559
+
 Project Specifications:
 
 Models ->
@@ -44,3 +46,4 @@ Amrut:
 styling/
 js/jquery
 
+Jeremy: TBD
