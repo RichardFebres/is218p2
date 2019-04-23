@@ -1,10 +1,11 @@
 <?php
 
 return [
-    'host' => 'localhost',
+    'driver' =>'mysql',
+    'host'  => 'localhost',
     'name' => 'is218p2',
     'user' => 'root',
-    'password' => ''
+    'pass' => ''
 ];
 
 ?>
