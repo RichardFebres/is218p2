@@ -26,7 +26,7 @@ if (isset($_POST['username'], $_POST['password'])) {
         $_SESSION['username'] = $username;
         $_SESSION['success'] = "You are now logged in";
 
-        header('location: protected.php');
+        header('location: profile.php');
 
     } else {
         // User doesnt exist

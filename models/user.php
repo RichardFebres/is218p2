@@ -13,7 +13,8 @@ function user_exists($email) {
 // Checks if the user credentials are valid
 function valid_credentials($email, $password, $con) {
     $email = mysqli_real_escape_string($con, $email);
-    $password = sha1($password);
+    //$password = sha1($password);
+    $password = $password;
 
     // FInd this username / password combination
 
