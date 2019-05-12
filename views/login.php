@@ -1,8 +1,8 @@
 <?php
 
 // Initialize the connection to the server
-require_once 'models/config.php';
-require_once 'models/user.php';
+require_once '../models/config.php';
+require_once '../models/user.php';
 
 // Define errors array for logging
 $errors = array();
@@ -39,7 +39,7 @@ if (isset($_POST['username'], $_POST['password'])) {
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -79,9 +79,9 @@ if (isset($_POST['username'], $_POST['password'])) {
             </form>
 
             <section id="user-social">
-                <img src="images/facebook.png" class="social-icon" />
-                <img src="images/google.png" class="social-icon" />
-                <img src="images/linkedin.png" class="social-icon" />
+                <img src="../images/logo-facebook.png" class="social-icon" />
+                <img src="../images/logo-google.png" class="social-icon" />
+                <img src="../images/logo-linkedin.png" class="social-icon" />
             </section>
 
         </section><!-- end card-left -->

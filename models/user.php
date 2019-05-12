@@ -1,7 +1,7 @@
 <?php
 // Checks if the given user exists in table
 
-require_once "models/config.php";
+require_once "../models/config.php";
 
 function user_exists($email) {
     $email = mysqli_real_escape_string($email);

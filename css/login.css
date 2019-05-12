@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+body {
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+    padding: 0px;
+}
+a {
+    text-decoration: none;
+}
+input:invalid {
+    box-shadow: none;
+}
+
+#content {
+    margin: 0 auto;
+    padding-top:8%;
+    text-align: center;
+    whitespace: nowrap;
+}
+#background {
+    width:100%;
+    height:35%;
+    background-color: #db685f;
+    position: absolute;
+    z-index: -1;
+    background: url(../images/clouds.png) no-repeat scroll 0px 0px;
+    background-size: cover;
+}
+
+.card-wrapper {
+    width: 1150px;
+    height:700px;
+    background-color:white;
+    box-shadow: 0 20px 80px 0 rgba(0, 0, 0, 0.1), 0 0px 0px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+    margin-top: 0;
+    display: inline-block;
+}
+.card-wrapper#login {
+}
+/* Slide in animation for card */
+.animation-slideRight {
+    animation: 1s ease-out 0s 1 slideRight;
+    -webkit-animation-fill-mode: forwards;
+}
+.animation-slideLeft {
+    animation: .6s ease-out 0s 1 slideLeft-out;
+    -webkit-animation-fill-mode: forwards;
+}
+
+/* Animation: Slide left */
+.slideLeft{
+    animation-name: slideLeft;
+    -webkit-animation-name: slideLeft;
+
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+
+    visibility: visible !important;
+}
+
+@keyframes slideLeft-out {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-180%);
+    }
+}
+
+@-webkit-keyframes slideLeft-out {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-180%);
+    }
+}
+
+/* Animation: Slide right */
+@keyframes slideRight {
+    0% {
+        transform: translateX(-150%);
+    }
+    50%{
+        transform: translateX(8%);
+    }
+    65%{
+        transform: translateX(-4%);
+    }
+    80%{
+        transform: translateX(4%);
+    }
+    95%{
+        transform: translateX(-2%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+@-webkit-keyframes slideRight {
+    0% {
+        -webkit-transform: translateX(-150%);
+    }
+    50%{
+        -webkit-transform: translateX(8%);
+    }
+    65%{
+        -webkit-transform: translateX(-4%);
+    }
+    80%{
+        -webkit-transform: translateX(4%);
+    }
+    95%{
+        -webkit-transform: translateX(-2%);
+    }
+    100% {
+        -webkit-transform: translateX(0%);
+    }
+}
+
+#login-card-left {
+    width: 66%;
+    height:100%;
+    background-color: white;
+    display:inline-block;
+    border-radius: 15px;
+}
+#login-card-right {
+    width: 34%;
+    height:100%;
+    background-color: #e16359;
+    display:inline-block;
+    float: right;
+    border-radius: 0px 15px 15px 0px;
+    background: url(../images/card-img-2.png) no-repeat scroll 0px 0px;
+    background-size: 100% 100%;
+    background-color: #da685f;
+}
+
+#logo {
+    width:80px;
+    height:80px;
+    display: flex;
+    margin: 0 auto;
+    background: url(../images/umbrella.png) no-repeat scroll;
+    background-size: 100% 100%;
+    margin-top:65px;
+}
+#card-header {
+    font-size: 27px;
+    color:#6b6b6b;
+    text-align: center;
+    font-family: 'Oxygen', sans-serif;
+    padding-top:38px;
+    padding-bottom:5px;
+}
+#card-subHeader {
+    font-size: 18px;
+    color:#b3b3b3;
+    text-align: center;
+    font-family: 'Oxygen', sans-serif;
+    padding-top:5px;
+    padding-bottom:0px;
+}
+#login-form {
+    width: 400px;
+    margin: 0 auto;
+    padding-top:20px;
+}
+.inputItem-wrapper {
+    width:100%;
+    height:50px;
+    background-color: #f8f8f8;
+    margin-top:5px;
+    margin-bottom:15px;
+    border: none;
+    border-radius: 10px;
+}
+.input-textField {
+    width:85%;
+    height:100%;
+    border: none;
+    display: flex;
+    background-color: inherit;
+    padding-left: 6px;
+    font-size: 15px;
+    color:#868686;
+    font-family: 'Oxygen', sans-serif;
+    outline: none;
+
+}
+.input-textField-image {
+    width:10%;
+    height:100%;
+    display: flex;
+    float: left;
+    padding-right: 9px;
+}
+.input-textField-image#email {
+    background: url(../images/email.png) no-repeat scroll 20px 16px;
+    background-size: 20px 20px;
+}
+.input-textField-image#password {
+    background: url(../images/key.png) no-repeat scroll 20px 16px;
+    background-size: 20px 20px;
+}
+.input-textField-image#name-first {
+    background: url(../images/user.png) no-repeat scroll 20px 16px;
+    background-size: 20px 20px;
+}
+.input-textField-image#name-last {
+    background: url(../images/top-hat.png) no-repeat scroll 20px 16px;
+    background-size: 20px 20px;
+}
+.input-textField-image#school {
+    background: url(../images/graduation.png) no-repeat scroll 20px 16px;
+    background-size: 20px 20px;
+}
+.input-textField-image#major {
+    background: url(../images/open-book.png) no-repeat scroll 20px 16px;
+    background-size: 20px 20px;
+}
+
+#input-submit {
+    width: 180px;
+    height: 45px;
+    background-color: #3aa9ab;
+    border-radius: 35px;
+    margin: 0 auto;
+    border: none;
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    margin-top: 40px;
+    transition: 0.3s;
+    justify-content: center;
+}
+#input-submit:hover {
+    background-color: #db685f;
+}
+
+#forgotPassword {
+    width: 300px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: grey;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 50px;
+    justify-content: center;
+    border: 3px #e4e4e4;
+    border-style: dashed;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+#forgotPassword:hover {
+    background-color: #db685f;
+    color: white;
+    border-color: #db685f;
+}
+
+/* Social */
+#user-social {
+    padding-top:25px;
+}
+
+
+
+
+#right-header {
+    font-size: 32px;
+    color:white;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    padding-top:185px;
+    letter-spacing: 0.5px;
+}
+#right-subText {
+    font-size: 16px;
+    color:white;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    padding:50px;
+    padding-top:18px;
+    line-height: 30px;
+}
+#button-signup {
+    width: 180px;
+    height: 45px;
+    background-color: rgba(0,0,0,0);
+    border: 3px white solid;
+    border-radius: 35px;
+    margin: 0 auto;
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    margin-top: 0px;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+
+
+}
+#button-signup:hover {
+    background-color: white;
+    color: #db685f;
+}
+
+#social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+.social-icon {
+    width:14px;
+    height:14px;
+    text-align: center;
+    padding:10px;
+    border-radius: 50%;
+    border: 2px solid grey;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.social-icon:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+
+
+
+/* Register */
+.card-wrapper#register {
+    width: 1150px;
+    height:845px;
+    background-color:white;
+    margin: 0 auto;
+    box-shadow: 0 20px 80px 0 rgba(0, 0, 0, 0.1), 0 0px 0px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+    margin-top: 0;
+}
+#register-card-left {
+    width: 34%;
+    height:100%;
+    background-color: #e16359;
+    display:inline-block;
+    float: left;
+    border-radius: 15px 0px 0px 15px;
+    background: url(../images/card-img-2.png) no-repeat scroll 0px 0px;
+    background-size: cover;
+    background-color: #da685f;
+}
+#register-card-right {
+    width: 66%;
+    height:100%;
+    background-color: white;
+    display:inline-block;
+    border-radius: 15px;
+}
+
+
+/* Errors */
+#error-container {
+    width:100%;
+    padding-top:10px;
+
+}
+.error {
+    font-size: 16px;
+    color: #da685f;
+    text-align: center;
+    font-family: 'Oxygen', sans-serif;
+
+}
