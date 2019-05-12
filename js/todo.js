@@ -1,3 +1,4 @@
+
 function createMockDataBase()
 {
     var todos = [
@@ -10,8 +11,65 @@ function createMockDataBase()
     return todos;
 }
 
+/*
+function generateTasks() {
+    <php
+
+    // LOGIN
+        if (isset($_POST['username'], $_POST['password'])) {
+
+            // Okay, so user has input some text for both fields
+
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            // Lets validate their input
+            if (valid_credentials($username, $password, $con)) {
+
+                // Credentials validated successfully
+                // Start the session
+
+                session_start();
+                $_SESSION['username'] = $username;
+                $_SESSION['success'] = "You are now logged in";
+
+                header('location: protected.php');
+
+            } else {
+                // User doesnt exist
+                array_push($errors, "Wrong username/password combination");
+            }
+        }
+
+    define('DB_SERVER', 'localhost');
+    define('DB_USERNAME', 'root');
+    define('DB_PASSWORD', '');
+    define('DB_NAME', 'is218p2');
+
+    // Connect to DB
+
+    $con = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME)
+
+    // Check if connection failed
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: ". mysqli_connect_error();
+    }
+
+    $sql = "SELECT  todos.createdate, todos.duedate, todos.message, todos.isdone" +
+                        "FROM todos WHERE oweneremail="$username" +
+                        "INNER JOIN accounts ON accounts.email = todos.owneremail";
+
+    $data = mysqli_query($con, $sql);
+
+?>
+*/
+
+
+}
+
+
 //Create the database
-data = createMockDataBase();
+// data = createMockDataBase();
 
 // Creates a task card
 function addTask(task)
