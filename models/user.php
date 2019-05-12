@@ -4,10 +4,10 @@
 require_once "../models/config.php";
 
 function user_exists($email) {
-    $email = mysqli_real_escape_string($email);
+    //$email = mysqli_real_escape_string($email);
     // Insert mysqli query here and test number of rows
-    $total = mysqli_query($con, "SELECT COUNT {'id'} FROM 'accounts' WHERE 'email' == '{$email}'");
-    return (mysqli_result($total, 0) == '1') ? true : false;
+    //$total = mysqli_query($con, "SELECT COUNT {'id'} FROM 'accounts' WHERE 'email' == '{$email}'");
+    //return (mysqli_result($total, 0) == '1') ? true : false;
 }
 
 // Checks if the user credentials are valid
@@ -23,4 +23,25 @@ function valid_credentials($email, $password, $con) {
 
     // Returns TRUE if username/password are valid, FALSE otherwise
     return (mysqli_num_rows($results) == 1);
+}
+
+// Grab a user's TODO tasks
+function getTasks($userID) {
+    //$query = "SELECT todos.createdate, todos.duedate, todos.message, todos.isdone FROM todos WHERE oweneremail='$userID' INNER JOIN accounts ON accounts.email = todos.owneremail";
+    $query = "SELECT createddate, duedate, message, isdone FROM todos WHERE ownerid='$userID'";
+
+    $results = mysqli_query(getConnection(), $query);
+
+    if (mysqli_num_rows($results) > 0)
+    {
+        echo "Rows found for this user: ".(mysqli_num_rows($results));
+    }
+    else
+    {
+        echo "No rows found.";
+    }
+
+
+    // Returns TRUE if username/password are valid, FALSE otherwise
+    return ($results);
 }
