@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+body {
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+    padding: 0px;
+}
+a {
+    text-decoration: none;
+}
+
+#main-container {
+    background-color: #f8f8f8;
+    padding: 30px;
+    display: inline-block;
+    width: 100%;
+    min-width: 830px;
+}
+#page-header {
+    color: #5a5a5a;
+    font-size:27px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left:10px;
+    text-align: left;
+}
+#welcomeBack {
+    color: #5a5a5a;
+    font-size:23px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    padding-left:10px;
+    text-align: left;
+}
+.board {
+    width:20%;
+    height: 100%;
+    padding: 30px;
+    padding-top:15px;
+    background-color: white;
+    box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.1), 0 0px 0px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+    float: left;
+    justify-content: center;
+    text-align: center;
+    display: inline-block;
+    margin-right:20px;
+    margin-bottom: 20px;
+    min-width: 306px;
+}
+.board-header {
+    color: #5a5a5a;
+    text-align: left;
+    font-size:20px;
+}
+.board-header#todo {
+    display: inline-block;
+    color: #657870;
+
+}
+.board-header#in-progress {
+    color: #db685f;
+}
+.board-header#review {
+    color: #c38e6c;
+}
+.board-header#done {
+    color: #639871;
+}
+
+.card-task {
+    width: 90%;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.1), 0 0px 0px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+    margin-top: 20px;
+    min-width: 242px;
+}
+.card-top {
+    width: 100%;
+    height: 30px;
+}
+.card-middle {
+    width: 100%;
+    height: 70px;
+    padding-top: 20px;
+}
+.card-img {
+    float: left;
+    width:20px;
+    height: 20px;
+    padding-top:8px;
+}
+.card-header {
+    color: #5a5a5a;
+    font-size:22px;
+    padding: 0px;
+    padding-left:12px;
+    text-align: left;
+    float: left;
+    flex-grow:1;
+}
+.card-attribute {
+    color: #999;
+    font-size: 16px;
+    padding-left:15px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+.button-taskMove {
+    width: 20%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: grey;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 auto;
+    margin-top: 15px;
+    justify-content: center;
+    border: 3px #e4e4e4;
+    border-style: dashed;
+    transition: 0.3s;
+    border-radius: 10px;
+    background-color: white;
+    margin-left:10px;
+
+}
+.button-taskMove#toToDo:hover {
+    background-color: #5a5a5a;
+    color: white;
+    border-color: #5a5a5a;
+}
+.button-taskMove#toInProgress:hover {
+    background-color: #db685f;
+    color: white;
+    border-color: #db685f;
+}
+.button-taskMove#toReview:hover {
+    background-color: #9e8fff;
+    color: white;
+    border-color: #9e8fff;
+}
+.button-taskMove#toDone:hover {
+    background-color: #639871;
+    color: white;
+    border-color: #639871;
+}
+
+.select {
+    display: block;
+    width:360px;
+    height: 50px;
+    margin-left:6px;
+    margin-bottom: 20px;
+    margin-top:8px;
+    padding:10px;
+    font-size:14px;
+    color: #404040;
+    border-radius:7px;
+    border: 0;
+}
+
+.social-icon {
+    width: 35px;
+    height: 35px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+
+.profile-header {
+    display: inline-block;
+    position: relative;
+    float: center;
+}
+
+.prof-picture {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    position: relative;
+}
+
+.confirmEdit
+{
+    width:200px;
+    height:30px;
+}
+
+.addnewtask
+{
+    padding-bottom:25px;
+    padding-left:10px;
+    color: grey;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+}
+
+.signout
+{
+    padding-bottom:15px;
+    padding-left:10px;
+    color: grey;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+
+}
