@@ -54,7 +54,7 @@ if (isset($_POST['username'], $_POST['password'])) {
     <div class="card-wrapper animation-slideRight" id="login">
         <section id="login-card-left">
             <div id="logo"></div>
-            <h3 id="card-header">Sign in to Stormify</h3>
+            <h3 id="card-header">Sign in to TwoDo</h3>
             <section id="error-container">
                     <span class="error"><?php
                         if (!empty($errors)) {
