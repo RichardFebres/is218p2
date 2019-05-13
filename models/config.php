@@ -11,7 +11,7 @@ define('DB_NAME', 'is218p2');
 */
 
 define('DB_SERVER', 'sql.njit.edu');
-define('DB_USERNAME', 'rcc442');
+define('DB_USERNAME', 'rc442');
 define('DB_PASSWORD', 'mathieu76');
 define('DB_NAME', 'rc442');
 
