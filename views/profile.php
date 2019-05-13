@@ -40,6 +40,8 @@ $result = mysqli_query(getConnection(), $query);
 
         ?>
     </h3>
+    <div class="addnewtask"><a href="addTask.php">Add New Task</a></div>
+
     <section class="board" id="inProgress">
         <h2 class="board-header" id="todo">In Progress</h2>
     </section>

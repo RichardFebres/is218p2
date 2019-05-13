@@ -62,12 +62,12 @@ function editTaskMessage($taskID, $title, $message, $date, $time)
     mysqli_query(getConnection(), $query);
 }
 
-function addTask($username, $ownerID, $taskID, $title, $message, $date, $time)
+function addTask($username, $ownerID, $title, $message, $date, $time)
 {
     // current date
     $currentDate = date("Y-m-d").' '.date("h:i:sa");
     $dueDate = $date." ".$time;
 
-    $query = "INSERT INTO todos (id, owneremail, ownerid, createddate, duedate, title, message, isdone) VALUES (default, '$username', $ownerID, '$currentDate', '$dueDate', $title, '$message', 0)";
+    $query = "INSERT INTO todos (id, owneremail, ownerid, createddate, duedate, title, message, isdone) VALUES (default, '$username', '$ownerID', '$currentDate', '$dueDate','$title', '$message', 0)";
     mysqli_query(getConnection(), $query);
 }

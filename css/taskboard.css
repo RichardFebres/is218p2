@@ -195,3 +195,12 @@ a {
     width:200px;
     height:30px;
 }
+
+.addnewtask
+{
+    padding-bottom:15px;
+    padding-left:10px;
+    color: grey;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+}

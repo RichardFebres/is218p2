@@ -12,21 +12,22 @@ function addUser($email, $password, $fname, $lname, $phone, $birthday)
     $con = getConnection();
     // Clean/convert data for database injection
     $email = trim($email);
-    $password_hashed = sha1($password);
+    //$password_hashed = sha1($password);
+    $password_hashed = $password;
     // Prepare query
-    $sql = "INSERT INTO users (id, email, password, fname, lname, phone, birthday) VALUES (DEFAULT, '$username','$password_hashed', '$fname', '$lname', '$phone', '$birthday')";
+    $sql = "INSERT INTO accounts (id, email, password, fname, lname, phone, birthday, gender) VALUES (DEFAULT, '$email','$password', '$fname', '$lname', '$phone', '$birthday', 'male')";
     // Insert into database
     mysqli_query($con, $sql);
 }
 // REGISTER VALIDATION
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Okay, so user has input some text for both fields
-    $username = $_POST['username'];
+    $username = $_POST['email'];
     $password = $_POST['password'];
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $birthday = $_POST['school'];
-    $phone = $_POST['major'];
+    $birthday = $_POST['birthday'];
+    $phone = $_POST['phone'];
 
     // Validate username
     if ($username == '') {
@@ -69,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $username;
 
         // Direct newly registered user to their profile page
-        header("Location: protected.php");
+        header("Location: profile.php");
 
     } else {
         // Display errors
@@ -85,7 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -127,12 +129,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="school"></div>
-                    <input class="input-textField" name="birth" type="tel" placeholder="Phone Number" required>
+                    <input class="input-textField" name="phone" type="tel" placeholder="Phone Number" required>
                 </div>
 
                 <div class="inputItem-wrapper">
                     <div class="input-textField-image" id="major"></div>
-                    <input class="input-textField" name="major" type="date" placeholder="Birthday" required>
+                    <input class="input-textField" name="birthday" type="date" placeholder="Birthday" required>
                 </div>
                 <input type="submit" value="SIGN UP" id="input-submit">
 
