@@ -44,3 +44,7 @@ function getTasks($userID) {
     // Returns TRUE if username/password are valid, FALSE otherwise
     return $result;
 }
+
+function justTesting()
+{
+}

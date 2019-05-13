@@ -6,8 +6,8 @@ function createMockDataBase()
         {id: 1, ownerEmail: "testemail@hotmail.com", ownderID: 3, createDate: "2017-05-03 00:00:00", dueDate: "2017-05-27 00:00:00",  message: "Item Two", isdone: 1},
         {id: 2, ownerEmail: "testemail@hotmail.com", ownderID: 3, createDate: "2017-05-03 00:00:00", dueDate: "2017-05-27 00:00:00",  message: "Item Three", isdone: 1},
         {id: 3, ownerEmail: "testemail@hotmail.com", ownderID: 3, createDate: "2017-05-03 00:00:00", dueDate: "2017-05-27 00:00:00",  message: "Item Four", isdone: 0},
-        {id: 4, ownerEmail: "testemail@hotmail.com", ownderID: 3, createDate: "2017-05-03 00:00:00", dueDate: "2017-05-27 00:00:00",  message: "Item Five", isdone: 1},
-    ]
+        {id: 4, ownerEmail: "testemail@hotmail.com", ownderID: 3, createDate: "2017-05-03 00:00:00", dueDate: "2017-05-27 00:00:00",  message: "Item Five", isdone: 1}
+    ];
     return todos;
 }
 
@@ -62,50 +62,49 @@ function generateTasks() {
     $data = mysqli_query($con, $sql);
 
 ?>
-*/
-
 
 }
+*/
 
 
 //Create the database
 // data = createMockDataBase();
 
 // Creates a task card
-function addTask(task)
+function addTask(id, message, isdone, createddate)
 {
     // Done or nah?
-    var section = (task.isdone ===  1) ? "done" : "inProgress";
-    var img = (task.isdone ===  1) ? "check.png" : "flask.png";
+    var section = (isdone ==  1) ? "done" : "inProgress";
+    var img = (isdone ==  1) ? "check.png" : "flask.png";
 
-    var itemCard = "<div class='card-task' id='" + task.id + "'>" +
+    var itemCard = "<div class='card-task' id='" + id + "'>" +
         "<div class='card-top'>" +
         "<img class='card-img' src='./images/" + img + "'/>" +
-        "<h3 class='' card-header'>" + task.message + "</h3>" +
+        "<h3 class='' card-header'>" + message + "</h3>" +
         "</div>" +
         "<div class='card-middle'>" +
-        "<h5 class='card-attribute'>" + task.ownerEmail + "</h5>" +
+        "<h5 class='card-attribute'>" + createddate + "</h5>" +
         "</div>" +
         "</div>";
 
     $("#" + section).append(itemCard);
 
     // Buttons
-    if (task.isdone === 0)
+    if (isdone == 0)
     {
         // Done
-        $(".card-task#" + task.id).append("<button class='button-taskMove' id='toDone' onclick='markDone($(this).parent())'>Done</button>");
-        $(".card-task#" + task.id).append("<button class='button-taskMove' id='toDone'>Edit</button>");
-        $(".card-task#" + task.id).append("<button class='button-taskMove' id='toDone' onclick='removeTask($(this).parent())'>Rem</button>");
-        $(".card-task#" + task.id).append("<button class='button-taskMove' id='toDone'>Add</button>");
+        $(".card-task#" + id).append("<button class='button-taskMove' id='toDone' onclick='markDone(id, message, isdone, createddate, $(this).parent())'>Done</button>");
+        $(".card-task#" + id).append("<button class='button-taskMove' id='toDone'>Edit</button>");
+        $(".card-task#" + id).append("<button class='button-taskMove' id='toDone' onclick='removeTask($(this).parent())'>Del</button>");
+        $(".card-task#" + id).append("<button class='button-taskMove' id='toDone'>Add</button>");
     }
     else
     {
         // Not done
-        $(".card-task#" + task.id).append("<button class='button-taskMove' id='toDone' onclick='markUnDone($(this).parent())'>Not Done</button>");
-        $(".card-task#" + task.id).append("<button class='button-taskMove' id='toDone'>Edit</button>");
-        $(".card-task#" + task.id).append("<button class='button-taskMove' id='toDone' onclick='removeTask($(this).parent())'>Rem</button>");
-        $(".card-task#" + task.id).append("<button class='button-taskMove' id='toDone'>Add</button>");
+        $(".card-task#" + id).append("<button class='button-taskMove' id='toDone' onclick='markUnDone(id, message, isdone, createddate, $(this).parent())'>Not Done</button>");
+        $(".card-task#" + id).append("<button class='button-taskMove' id='toDone'>Edit</button>");
+        $(".card-task#" + id).append("<button class='button-taskMove' id='toDone' onclick='removeTask($(this).parent())'>Del</button>");
+        $(".card-task#" + id).append("<button class='button-taskMove' id='toDone'>Add</button>");
     }
 
 }
@@ -113,40 +112,70 @@ function addTask(task)
 // Removes a task from the list
 function removeTask(taskCard)
 {
-    var task = getTask(taskCard.attr('id'));
-    console.log("Removing task " + task.message);
+    // Task object
+    var taskID = taskCard.attr('id');
+
+    // Call php function to delete task
+    jQuery.ajax({
+        type: "POST",
+        url: '../actions/deleteTask.php',
+        dataType: 'html',
+        data: {func: 'justTesting', taskID: taskID},
+
+        success: function(data)
+        {
+            console.log(data);
+        }
+    });
+
+    // Refresh page
+    location.reload();
+}
+
+function markDone(taskID, message, isdone, createddate, card)
+{
+    // Call php function to delete task
+    jQuery.ajax({
+        type: "POST",
+        url: '../actions/updateStatus.php',
+        dataType: 'html',
+        data: {taskID: taskID, isdone: 1},
+
+        success: function(data)
+        {
+            console.log(data);
+        }
+    });
 
     // Remove card
-    taskCard.remove();
-}
-
-function markDone(taskCard)
-{
-    // Task object
-    var task = getTask(taskCard.attr('id'));
-
-    // Change to done
-    task.isdone = 1;
-
-    // Remove from current section
-    removeTask(taskCard);
+    $(card).remove();
 
     // Re-add
-    addTask(task);
+    addTask(taskID, message, isdone, createddate);
 }
-function markUnDone(taskCard)
+function markUnDone(taskID, message, isdone, createddate, card)
 {
-    // Task object
-    var task = getTask(taskCard.attr('id'));
+    // Call php function to delete task
+    jQuery.ajax({
+        type: "POST",
+        url: '../actions/updateStatus.php',
+        dataType: 'html',
+        data: {taskID: taskID, isdone: 0},
 
-    // Change to done
-    task.isdone = 0;
+        success: function(data)
+        {
+            console.log(data);
+        }
+    });
 
-    // Remove from current section
-    removeTask(taskCard);
+    // Refresh page
+    //location.reload();
 
-    // Re-add
-    addTask(task);
+    // Remove card
+    $(card).remove();
+
+    // Re-add card
+    addTask(taskID, message, isdone, createddate);
 }
 
 function populateBoard()
@@ -161,7 +190,7 @@ function populateBoard()
 
 // Populate the board when the page is ready
 $( document ).ready(function() {
-    populateBoard();
+    //populateBoard();
 });
 
 // Returns a task from the tasks by ID
@@ -175,4 +204,10 @@ function getTask(taskID)
         }
     }
     return -1;
+}
+
+
+function frickThis()
+{
+    //console.log()
 }

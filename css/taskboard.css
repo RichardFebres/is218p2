@@ -28,6 +28,14 @@ a {
     padding-left:10px;
     text-align: left;
 }
+#welcomeBack {
+    color: #5a5a5a;
+    font-size:23px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    padding-left:10px;
+    text-align: left;
+}
 .board {
     width:20%;
     height: 100%;
