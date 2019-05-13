@@ -198,9 +198,19 @@ a {
 
 .addnewtask
 {
+    padding-bottom:25px;
+    padding-left:10px;
+    color: grey;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+}
+
+.signout
+{
     padding-bottom:15px;
     padding-left:10px;
     color: grey;
     font-family: 'Work Sans', sans-serif;
     font-size: 16px;
+
 }

@@ -38,6 +38,7 @@ $taskID = $_SESSION['editTask'];
 
         ?>
     </h3>
+    <div class="signout"><a href="../actions/signOut.php">Sign Out</a href=""></div>
     <form method="post">
         Title:<br>
         <input type="text" name="title" value="<?php getTask($taskID, 'title'); ?>"><br>

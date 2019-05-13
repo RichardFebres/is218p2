@@ -196,6 +196,21 @@ function addNewTask(taskCard)
     window.location.href = "../views/addTask.php";
 }
 
+function signOut()
+{
+    console.log("signing out");
+    jQuery.ajax({
+        type: "POST",
+        url: '../actions/signOut.php',
+        dataType: 'html',
+        data: {},
+
+        success: function(data)
+        {
+        }
+    });
+}
+
 
 function populateBoard()
 {

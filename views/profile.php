@@ -40,6 +40,7 @@ $result = mysqli_query(getConnection(), $query);
 
         ?>
     </h3>
+    <div class="signout"><a href="../actions/signOut.php">Sign Out</a href=""></div>
     <div class="addnewtask"><a href="addTask.php">Add New Task</a></div>
 
     <section class="board" id="inProgress">

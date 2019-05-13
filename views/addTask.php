@@ -39,6 +39,7 @@ $ownerID = $_SESSION['ownerID'];
 
         ?>
     </h3>
+    <div class="signout"><a href="../actions/signOut.php">Sign Out</a href=""></div>
     <form method="post">
         Title:<br>
         <input type="text" name="title" placeholder="Enter message here"><br>
