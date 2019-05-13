@@ -24,6 +24,8 @@ if (isset($_POST['username'], $_POST['password'])) {
 
         session_start();
         $_SESSION['username'] = $username;
+        //$_SESSION['userID'] = mysqli_query($con, "SELECT id FROM accounts WHERE email='$username'");
+
         $_SESSION['success'] = "You are now logged in";
 
         header('location: profile.php');

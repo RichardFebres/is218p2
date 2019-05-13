@@ -30,18 +30,17 @@ function getTasks($userID) {
     //$query = "SELECT todos.createdate, todos.duedate, todos.message, todos.isdone FROM todos WHERE oweneremail='$userID' INNER JOIN accounts ON accounts.email = todos.owneremail";
     $query = "SELECT createddate, duedate, message, isdone FROM todos WHERE ownerid='$userID'";
 
-    $results = mysqli_query(getConnection(), $query);
+    $result = mysqli_query(getConnection(), $query);
 
-    if (mysqli_num_rows($results) > 0)
+    if (mysqli_num_rows($result) > 0)
     {
-        echo "Rows found for this user: ".(mysqli_num_rows($results));
+        //echo "Rows found for this user: ".(mysqli_num_rows($result));
     }
     else
     {
-        echo "No rows found.";
+        //echo "No rows found.";
     }
 
-
     // Returns TRUE if username/password are valid, FALSE otherwise
-    return ($results);
+    return $result;
 }
