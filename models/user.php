@@ -45,6 +45,29 @@ function getTasks($userID) {
     return $result;
 }
 
-function justTesting()
+function getTask($taskID, $column)
 {
+    $query = "SELECT title, message, duedate FROM todos WHERE id='$taskID'";
+    $result = mysqli_query(getConnection(), $query);
+    while ($row = mysqli_fetch_array($result))
+    {
+        echo $row[$column];
+    }
+}
+
+function editTaskMessage($taskID, $title, $message, $date, $time)
+{
+    $newDate = $date." ".$time;
+    $query = "UPDATE todos SET title='$title', message='$message', duedate='$newDate' WHERE id='$taskID'";
+    mysqli_query(getConnection(), $query);
+}
+
+function addTask($username, $ownerID, $taskID, $title, $message, $date, $time)
+{
+    // current date
+    $currentDate = date("Y-m-d").' '.date("h:i:sa");
+    $dueDate = $date." ".$time;
+
+    $query = "INSERT INTO todos (id, owneremail, ownerid, createddate, duedate, title, message, isdone) VALUES (default, '$username', $ownerID, '$currentDate', '$dueDate', $title, '$message', 0)";
+    mysqli_query(getConnection(), $query);
 }

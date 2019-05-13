@@ -7,12 +7,12 @@ require_once '../models/user.php';
 session_start();
 //echo 'hello your email is'.$_SESSION['username'];
 
-// Get todos
 // Get todo items for this user
 $username = $_SESSION['username'];
-$query = "SELECT id, createddate, duedate, title, message, isdone FROM todos WHERE owneremail='$username'";
-$result = mysqli_query(getConnection(), $query);
+$taskID = $_SESSION['editTask'];
+$ownerID = $_SESSION['ownerID'];
 
+//echo 'owner id '.$ownerID;
 ?>
 
 <!DOCTYPE html>
@@ -30,30 +30,32 @@ $result = mysqli_query(getConnection(), $query);
 <div id="main-container">
     <h1 id="page-header">Task Board</h1>
     <h3 id="welcomeBack">Welcome back, <?php
-        $query_2 = "SELECT id, fname, lname FROM accounts WHERE email='$username'";
+        $query_2 = "SELECT fname, lname FROM accounts WHERE email='$username'";
         $result_2 = mysqli_query(getConnection(), $query_2);
         while ($row = mysqli_fetch_array($result_2))
         {
-            $_SESSION['ownerID'] = $row['id'];
             echo $row['fname']." ".$row['lname'];
         }
 
         ?>
     </h3>
-    <section class="board" id="inProgress">
-        <h2 class="board-header" id="todo">In Progress</h2>
-    </section>
-
-    <section class="board" id="done">
-        <h2 class="board-header" id="todo">Done</h2>
-        <?php
-        while ($row = mysqli_fetch_array($result))
+    <form method="post">
+        Title:<br>
+        <input type="text" name="title" placeholder="Enter message here"><br>
+        Message:<br>
+        <input type="text" name="message" placeholder="Enter message here"><br>
+        Due Date:<br>
+        <input type="date" name="duedate"><br>
+        Time:<br>
+        <input type="time" name="time"><br>
+        <button class="confirmEdit" onclick="<?php
+        if (isset($_POST['title']) && isset($_POST['message']) && isset($_POST['duedate']) && isset($_POST['time']))
         {
-            echo '<script type="text/javascript">addTask("' . $row["id"] . '", "' . $row["title"] . '", "' . $row["message"] . '", "' . $row["isdone"] . '", "' . $row["duedate"] . '");</script>';
+            addTask($username, $ownerID, $_POST['title'], $_POST['message'], $_POST['duedate'], $_POST['time']);
+            header('location: profile.php');
         }
-        ?>
-
-    </section>
+        ?>">Add Task</button>
+    </form>
 </div>
 
 </body>

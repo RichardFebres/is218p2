@@ -7,12 +7,11 @@ require_once '../models/user.php';
 session_start();
 //echo 'hello your email is'.$_SESSION['username'];
 
-// Get todos
 // Get todo items for this user
 $username = $_SESSION['username'];
-$query = "SELECT id, createddate, duedate, title, message, isdone FROM todos WHERE owneremail='$username'";
-$result = mysqli_query(getConnection(), $query);
+$taskID = $_SESSION['editTask'];
 
+//echo 'task id '.$taskID;
 ?>
 
 <!DOCTYPE html>
@@ -30,30 +29,32 @@ $result = mysqli_query(getConnection(), $query);
 <div id="main-container">
     <h1 id="page-header">Task Board</h1>
     <h3 id="welcomeBack">Welcome back, <?php
-        $query_2 = "SELECT id, fname, lname FROM accounts WHERE email='$username'";
+        $query_2 = "SELECT fname, lname FROM accounts WHERE email='$username'";
         $result_2 = mysqli_query(getConnection(), $query_2);
         while ($row = mysqli_fetch_array($result_2))
         {
-            $_SESSION['ownerID'] = $row['id'];
             echo $row['fname']." ".$row['lname'];
         }
 
         ?>
     </h3>
-    <section class="board" id="inProgress">
-        <h2 class="board-header" id="todo">In Progress</h2>
-    </section>
-
-    <section class="board" id="done">
-        <h2 class="board-header" id="todo">Done</h2>
-        <?php
-        while ($row = mysqli_fetch_array($result))
+    <form method="post">
+        Title:<br>
+        <input type="text" name="title" value="<?php getTask($taskID, 'title'); ?>"><br>
+        Message:<br>
+        <input type="text" name="message" value="<?php getTask($taskID, 'message'); ?>"><br>
+        Due Date:<br>
+        <input type="date" name="duedate" value="<?php getTask($taskID, 'duedate'); ?>"><br>
+        Time:<br>
+        <input type="time" name="time"><br>
+        <button class="confirmEdit" onclick="<?php
+        if (isset($_POST['title']) && isset($_POST['message']) && isset($_POST['duedate']) && isset($_POST['time']))
         {
-            echo '<script type="text/javascript">addTask("' . $row["id"] . '", "' . $row["title"] . '", "' . $row["message"] . '", "' . $row["isdone"] . '", "' . $row["duedate"] . '");</script>';
+            editTaskMessage($taskID, $_POST['title'], $_POST['message'], $_POST['duedate'], $_POST['time']);
+            header('location: profile.php');
         }
-        ?>
-
-    </section>
+        ?>">Confirm Edit</button>
+    </form>
 </div>
 
 </body>
